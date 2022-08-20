@@ -24,7 +24,6 @@ const Card = ({
   return (
     <TouchableOpacity key={id} onPress={() => onPress?.call(null, {id, name})}>
       <View
-        key={id}
         style={[
           Styles.containerStyle,
           isHighlighted ? Styles.containerHighlightedStyle : {},

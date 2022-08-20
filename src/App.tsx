@@ -5,7 +5,6 @@ import {setTopLevelNavigator} from './services/navigationService';
 import {colors} from './common/colors';
 import {Provider} from 'react-redux';
 import store from './store';
-
 const theme = {
   ...DefaultTheme,
   colors: {

@@ -8,16 +8,16 @@ import {useDispatch, useSelector} from 'react-redux';
 import {RootDispatch, RootState} from '../../store';
 import {getAllTrips} from '../../store/tripsSlice.slice';
 import {LoadingView} from '../../components/LoadingView';
+import {useAppState} from '../../services/useAppState';
 
 const Trip = () => {
   const dispatch = useDispatch<RootDispatch>();
   const {data, isError, loading} = useSelector(
     (state: RootState) => state.trips,
   );
-
+  const appWasInBackgroundState = useAppState();
   useEffect(() => {
     dispatch(getAllTrips());
-    console.log('trip data ui:', data);
   }, []);
 
   const onCardPress = useCallback((item: any) => {
@@ -39,6 +39,9 @@ const Trip = () => {
           renderItem={({item}: ListRenderItemInfo<CardProps>) => {
             return (
               <Card
+                isHighlighted={
+                  appWasInBackgroundState && item.status == 'NOT_STARTED'
+                }
                 id={item.id}
                 name={item.name}
                 startDate={item.startDate}
