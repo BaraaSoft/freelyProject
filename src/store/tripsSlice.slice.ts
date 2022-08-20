@@ -1,8 +1,5 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import axios from 'axios';
-
-import type {PayloadAction} from '@reduxjs/toolkit';
-
+import _ from 'lodash';
 export interface Trip {
   id: string;
   name: string;
@@ -33,9 +30,8 @@ export const getAllTrips = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       await delay(3000);
-      const resp = await require('../../__data__/trip-list.json');
-      console.log('response trips:', resp);
-      return resp;
+      const res = await require('../../__data__/trip-list.json');
+      return res;
     } catch (error) {
       if (error instanceof Error) console.log(error);
       return thunkAPI.rejectWithValue('Error loading trips data');
@@ -53,7 +49,7 @@ const TripsSlice = createSlice({
     });
     builder.addCase(getAllTrips.fulfilled, (state, action) => {
       state.loading = false;
-      state.data.push(...action.payload);
+      state.data = _.uniqBy([...state.data, ...action.payload], 'id');
     });
     builder.addCase(getAllTrips.rejected, (state, action) => {
       state.loading = false;
