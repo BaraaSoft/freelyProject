@@ -2,7 +2,9 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {APP_SCREENS} from '../../screens/screens';
 import TripScreen from '../../screens/trip/Trip';
-import TripDetailsScreen from '../../screens/tripDetails/TripDetails';
+import TripDetailsScreen, {
+  navigationOptions,
+} from '../../screens/tripDetails/TripDetails';
 
 const Stack = createStackNavigator();
 
@@ -17,7 +19,7 @@ const TripStack = () => {
       <Stack.Screen
         name={APP_SCREENS.TripDetailsScreen}
         component={TripDetailsScreen}
-        options={{headerShown: false}}
+        options={navigationOptions}
       />
     </Stack.Navigator>
   );

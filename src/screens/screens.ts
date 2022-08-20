@@ -4,4 +4,8 @@ export const APP_SCREENS = {
   TripScreen: 'TripScreen',
   /* Trip stack  screens*/
   TripDetailsScreen: 'TripDetailsScreen',
+  Stack: {
+    TripStack: 'TripStack',
+    MainStack: 'MainStack',
+  },
 };

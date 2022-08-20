@@ -18,7 +18,7 @@ const MainStack = () => {
       />
       <Tab.Screen
         component={TripStack}
-        name={APP_SCREENS.TripScreen}
+        name={APP_SCREENS.Stack.TripStack}
         options={{headerShown: false}}
       />
     </Tab.Navigator>

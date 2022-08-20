@@ -24,7 +24,7 @@ const renderIcon = (name: string, focused: boolean) => {
         color={focused ? colors.main.primary : colors.main.gray}
       />
     ),
-    TripScreen: (
+    TripStack: (
       <EntypoIcon
         name="map"
         size={28}
@@ -37,7 +37,7 @@ const renderIcon = (name: string, focused: boolean) => {
 
 const TabName: any = {
   HomeScreen: 'Home',
-  TripScreen: 'Trips',
+  TripStack: 'Trips',
 };
 
 const TabBar = (props: BottomTabBarProps) => {
