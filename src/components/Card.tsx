@@ -9,7 +9,7 @@ export interface CardProps {
   startDate: string;
   endDate: string;
   status: 'NOT_STARTED' | 'STARTED' | 'FINISHED';
-  onPress?: (itemId: string) => void;
+  onPress?: ({id, name}: {id: string; name: string}) => void;
 }
 
 const Card = ({
@@ -22,8 +22,9 @@ const Card = ({
   id,
 }: CardProps) => {
   return (
-    <TouchableOpacity key={id} onPress={() => onPress?.call(null, id)}>
+    <TouchableOpacity key={id} onPress={() => onPress?.call(null, {id, name})}>
       <View
+        key={id}
         style={[
           Styles.containerStyle,
           isHighlighted ? Styles.containerHighlightedStyle : {},
