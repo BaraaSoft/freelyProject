@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment, useCallback, useEffect} from 'react';
 import {Text, FlatList, ListRenderItemInfo} from 'react-native';
 import {goTo, navigate} from '../../services/navigationService';
 import {APP_SCREENS} from '../screens';
@@ -7,6 +7,7 @@ import Card, {CardProps} from '../../components/Card';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootDispatch, RootState} from '../../store';
 import {getAllTrips} from '../../store/tripsSlice.slice';
+import {LoadingView} from '../../components/LoadingView';
 
 const Trip = () => {
   const dispatch = useDispatch<RootDispatch>();
@@ -18,7 +19,15 @@ const Trip = () => {
     dispatch(getAllTrips());
     console.log('trip data ui:', data);
   }, []);
-  if (loading) return <Text>Loading ...</Text>;
+
+  const onCardPress = useCallback((item: any) => {
+    navigate(APP_SCREENS.Stack.TripStack, APP_SCREENS.TripDetailsScreen, {
+      tripId: item.id,
+      tripName: item.name,
+    });
+  }, []);
+
+  if (loading) return <LoadingView />;
   return (
     <Fragment>
       <Container>
@@ -35,6 +44,7 @@ const Trip = () => {
                 startDate={item.startDate}
                 endDate={item.endDate}
                 status={item.status}
+                onPress={onCardPress}
               />
             );
           }}
