@@ -1,6 +1,13 @@
-import { Animated, Dimensions, Image, Text, TouchableOpacity,StyleSheet } from "react-native";
-import styled from "styled-components";
-import { colors } from "../common/colors"
+import {
+  Animated,
+  Dimensions,
+  Image,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
+import styled from 'styled-components';
+import {colors} from '../common/colors';
 
 interface IconProps {
   focused: boolean;
@@ -8,7 +15,7 @@ interface IconProps {
 
 const BOTTOM_PADDING = 12;
 const TAB_BAR_HEIGHT = 72 + BOTTOM_PADDING;
-const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export const TabBarContainer = styled(Animated.View)`
   flex-direction: row;
@@ -25,7 +32,7 @@ export const TabBarContainer = styled(Animated.View)`
 
 export const TabButton = styled(TouchableOpacity)<IconProps>`
   align-items: center;
-  width: ${SCREEN_WIDTH / 5};
+  width: ${SCREEN_WIDTH / 2};
   height: 100%;
   justify-content: center;
 `;
@@ -41,29 +48,25 @@ export const TabIcon = styled(Image)<IconProps>`
   height: 24px;
 `;
 
-
 export const iconStyling = StyleSheet.create({
-    scanStyle:{
-      backgroundColor:colors.main.primary,
-      borderRadius:100,
-      borderWidth:1,
-      padding: 10,
-      borderColor:colors.main.primary,
-      shadowColor: colors.main.primary,
-      shadowOffset: {width: -1, height: 5},
-      shadowOpacity: 0.6,
-      shadowRadius: 4,
-    }
-})
+  scanStyle: {
+    backgroundColor: colors.main.primary,
+    borderRadius: 100,
+    borderWidth: 1,
+    padding: 10,
+    borderColor: colors.main.primary,
+    shadowColor: colors.main.primary,
+    shadowOffset: {width: -1, height: 5},
+    shadowOpacity: 0.6,
+    shadowRadius: 4,
+  },
+});
 
 export const screenStyling = StyleSheet.create({
-    tabbarStyle:{
-        shadowColor: colors.main.gray,
-        shadowOffset: {width: -2, height: -6},
-        shadowOpacity: 0.2,
-        shadowRadius: 15,
-    }
-})
-
-
-
+  tabbarStyle: {
+    shadowColor: colors.main.gray,
+    shadowOffset: {width: -2, height: -6},
+    shadowOpacity: 0.2,
+    shadowRadius: 15
+  },
+});
